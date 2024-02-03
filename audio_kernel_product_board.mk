@@ -20,13 +20,13 @@ PRODUCT_PACKAGES += $(KERNEL_MODULES_OUT)/q6_notifier_dlkm.ko\
 	$(KERNEL_MODULES_OUT)/machine_dlkm.ko
 ifneq ($(call is-board-platform-in-list,bengal holi blair), true)
 PRODUCT_PACKAGES += $(KERNEL_MODULES_OUT)/swr_dmic_dlkm.ko \
-	$(KERNEL_MODULES_OUT)/swr_haptics_dlkm.ko \
 	$(KERNEL_MODULES_OUT)/lpass_cdc_wsa2_macro_dlkm.ko \
 	$(KERNEL_MODULES_OUT)/lpass_cdc_wsa_macro_dlkm.ko \
 	$(KERNEL_MODULES_OUT)/lpass_cdc_va_macro_dlkm.ko \
 	$(KERNEL_MODULES_OUT)/lpass_cdc_rx_macro_dlkm.ko \
 	$(KERNEL_MODULES_OUT)/lpass_cdc_tx_macro_dlkm.ko \
 	$(KERNEL_MODULES_OUT)/lpass_cdc_dlkm.ko \
+	$(KERNEL_MODULES_OUT)/tfa98xx_dlkm.ko \
 	$(KERNEL_MODULES_OUT)/wsa884x_dlkm.ko \
 	$(KERNEL_MODULES_OUT)/wsa883x_dlkm.ko \
 	$(KERNEL_MODULES_OUT)/wcd939x_dlkm.ko \
