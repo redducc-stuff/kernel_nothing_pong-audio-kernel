@@ -868,7 +868,7 @@ correct_plug_type:
 							"special ":""));
 					goto report;
 				}
-				if ((is_dio4480() || is_was4780()) && (plug_type == MBHC_PLUG_TYPE_HEADSET ||
+				if (wcd_mbhc_usbc_switch_autodetect() && (plug_type == MBHC_PLUG_TYPE_HEADSET ||
 						plug_type == MBHC_PLUG_TYPE_HEADPHONE)) {
 					pr_info("%s: use audio-switch's auto-detection, break 3s loop\n", __func__);
 					break;

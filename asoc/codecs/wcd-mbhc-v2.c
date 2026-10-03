@@ -1034,7 +1034,7 @@ static void wcd_mbhc_swch_irq_handler(struct wcd_mbhc *mbhc)
 
 	if ((mbhc->current_plug == MBHC_PLUG_TYPE_NONE) &&
 	    detection_type) {
-		if (is_dio4480() || is_was4780()) {
+		if (wcd_mbhc_usbc_switch_autodetect()) {
 			pr_info("%s: mbhc detect plug in, sleep 100ms\n", __func__);
 			msleep(100);
 		}
@@ -1145,7 +1145,7 @@ static void wcd_mbhc_swch_irq_handler(struct wcd_mbhc *mbhc)
 		extcon_set_state_sync(mbhc->extdev, extdev_type, 0);
 
 		if (mbhc->mbhc_cfg->enable_usbc_analog) {
-			if (is_dio4480() || is_was4780()) {
+			if (wcd_mbhc_usbc_switch_autodetect()) {
 				pr_info("%s: plug out, sleep 900ms\n", __func__);
 				msleep(900);
 			}
