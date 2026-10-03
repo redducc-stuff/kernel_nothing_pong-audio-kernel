@@ -648,13 +648,13 @@ int wcd_mbhc_get_button_mask(struct wcd_mbhc *mbhc);
 void wcd_mbhc_report_plug(struct wcd_mbhc *mbhc, int insertion,
 			enum snd_jack_types jack_type);
 
-/* Exported by the Nothing fsa4480 driver; weak so mbhc still loads without it */
-extern bool is_dio4480(void) __weak;
-extern bool is_was4780(void) __weak;
+/* Exported by the Nothing fsa4480 driver */
+extern bool is_dio4480(void);
+extern bool is_was4780(void);
 
 static inline bool wcd_mbhc_usbc_switch_autodetect(void)
 {
-	return (is_dio4480 && is_dio4480()) || (is_was4780 && is_was4780());
+	return is_dio4480() || is_was4780();
 }
 
 #endif /* __WCD_MBHC_V2_H__ */
