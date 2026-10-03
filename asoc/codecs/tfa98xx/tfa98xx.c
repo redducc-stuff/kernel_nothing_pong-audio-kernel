@@ -5542,7 +5542,7 @@ static int tfa98xx_i2c_probe(struct i2c_client *i2c)
 
 	if (gpio_is_valid(tfa98xx->irq_gpio)) {
 		ret = devm_gpio_request_one(&i2c->dev, tfa98xx->irq_gpio,
-			GPIOF_DIR_IN, "TFA98XX_INT");
+			GPIOF_IN, "TFA98XX_INT");
 		if (ret)
 			return ret;
 	}
@@ -5861,8 +5861,7 @@ static int __init tfa98xx_i2c_init(void)
 	tfa98xx_cache = kmem_cache_create("tfa98xx_cache", /* Cache name /proc/slabinfo */
 		PAGE_SIZE, /* Structure size, we should fit in single page */
 		0, /* Structure alignment */
-		(SLAB_HWCACHE_ALIGN | SLAB_RECLAIM_ACCOUNT |
-			SLAB_MEM_SPREAD), /* Cache property */
+		(SLAB_HWCACHE_ALIGN | SLAB_RECLAIM_ACCOUNT), /* Cache property */
 		NULL); /* Object constructor */
 	if (!tfa98xx_cache) {
 		pr_err("tfa98xx can't create memory pool\n");
