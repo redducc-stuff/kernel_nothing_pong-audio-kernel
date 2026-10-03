@@ -263,9 +263,10 @@ static int get_mi2s_tdm_auxpcm_intf_index(const char *stream_name)
 		return SEN_MI2S_TDM_AUXPCM;
 	else if (strnstr(stream_name, "LPAIF_VA", strlen(stream_name)))
 		return QUIN_MI2S_TDM_AUXPCM;
+	/* Backend names follow the 6.6 scheme, see msm-audio-defs.h */
 	else if (strnstr(stream_name, "LPAIF_AUD", strlen(stream_name))){
 		if (strnstr(stream_name, "PRIMARY", strlen(stream_name)))
-			return SEP_MI2S_TDM_AUXPCM;
+			return SEC_MI2S_TDM_AUXPCM;
 		else if (strnstr(stream_name, "SECONDARY", strlen(stream_name)))
 			return TER_MI2S_TDM_AUXPCM;
 	}
@@ -274,6 +275,8 @@ static int get_mi2s_tdm_auxpcm_intf_index(const char *stream_name)
 			return PRI_MI2S_TDM_AUXPCM;
 		else if (strnstr(stream_name, "SECONDARY", strlen(stream_name)))
 			return SEC_MI2S_TDM_AUXPCM;
+		else if (strnstr(stream_name, "TERTIARY", strlen(stream_name)))
+			return TER_MI2S_TDM_AUXPCM;
 	}
 	pr_debug("%s: stream name %s does not match\n", __func__, stream_name);
 	return -EINVAL;
@@ -862,7 +865,7 @@ int msm_common_snd_init(struct platform_device *pdev, struct snd_soc_card *card)
 	common_pdata->mi2s_gpio_p[SEC_MI2S_TDM_AUXPCM] = of_parse_phandle(pdev->dev.of_node,
 			"qcom,sec-mi2s-gpios", 0);
 	common_pdata->mi2s_gpio_p[TER_MI2S_TDM_AUXPCM] = of_parse_phandle(pdev->dev.of_node,
-			"qcom,sen-mi2s-gpios", 0);
+			"qcom,tert-mi2s-gpios", 0);
 	common_pdata->mi2s_gpio_p[QUAT_MI2S_TDM_AUXPCM] = of_parse_phandle(pdev->dev.of_node,
 			"qcom,quat-mi2s-gpios", 0);
 	common_pdata->mi2s_gpio_p[QUIN_MI2S_TDM_AUXPCM] = of_parse_phandle(pdev->dev.of_node,
